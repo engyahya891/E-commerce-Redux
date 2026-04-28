@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchCategories } from '../Redux/productsSlice'; // استدعاء دالة الجلب
 
-// 🎨 قاموس الصور: نربط كل تصنيف متوقع بصورة تناسب تصميم الموقع
+//  قاموس الصور: نربط كل تصنيف متوقع بصورة تناسب تصميم الموقع
 const CATEGORY_UI = {
   "electronics": { image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?q=80&w=800", desc: "High-frequency computing modules." },
   "clothing": { image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=800", desc: "Next-gen protective apparel." },
@@ -20,7 +20,7 @@ export default function Categories() {
   const { categories, categoriesStatus } = useSelector((state) => state.products);
 
   useEffect(() => {
-    // نجلب التصنيفات من السيرفر عند فتح الصفحة (الرابط الأول في PDF)
+    // نجلب التصنيفات من السيرفر عند فتح الصفحة 
     if (categoriesStatus === 'idle') {
       dispatch(fetchCategories());
     }
@@ -44,14 +44,12 @@ export default function Categories() {
             {categories.map((catName, index) => {
               // نبحث عن الصورة المناسبة للتصنيف أو نستخدم الافتراضية
               const uiData = CATEGORY_UI[catName.toLowerCase()] || CATEGORY_UI["default"];
-              
-              // جعل العنصر الأول يأخذ مساحة أكبر لجمالية التصميم
               const spanClass = index === 0 ? 'md:col-span-2 md:row-span-2' : 'md:col-span-1 md:row-span-1';
 
               return (
                 <Link 
                   to="/products"
-                  // 🧠 نرسل اسم التصنيف كـ State لكي تلتقطه صفحة المنتجات
+                  // نرسل اسم التصنيف كـ State لكي تلتقطه صفحة المنتجات
                   state={{ category: catName }} 
                   key={index}
                   className={`group relative overflow-hidden bg-[#0a0a0a] border border-gray-900 hover:border-cyan-400/50 transition-colors duration-500 flex flex-col justify-end p-8 ${spanClass}`}

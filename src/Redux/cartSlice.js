@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import apiClient from '../api/axiosInstance';
 
-// 🚀 1. إرسال/إنشاء السلة على السيرفر (POST)
+// 1. إرسال/إنشاء السلة على السيرفر (POST)
 export const syncCartWithServer = createAsyncThunk('cart/syncWithServer', async (_, { getState, rejectWithValue }) => {
     try {
       const state = getState();
@@ -18,7 +18,7 @@ export const syncCartWithServer = createAsyncThunk('cart/syncWithServer', async 
     }
 });
 
-// 🚀 2. جلب سلات المستخدم من السيرفر (GET) - لتلبية متطلبات الـ PDF
+//  2. جلب سلات المستخدم من السيرفر (GET)
 export const fetchUserCarts = createAsyncThunk('cart/fetchUserCarts', async (userId, { rejectWithValue }) => {
     try {
       const response = await apiClient.get(`/carts/user/${userId}`);
@@ -28,7 +28,7 @@ export const fetchUserCarts = createAsyncThunk('cart/fetchUserCarts', async (use
     }
 });
 
-// 🚀 3. حذف/تفريغ السلة من السيرفر (DELETE)
+//  3. حذف/تفريغ السلة من السيرفر (DELETE)
 export const deleteCartOnServer = createAsyncThunk('cart/deleteCartOnServer', async (cartId, { rejectWithValue }) => {
     try {
       await apiClient.delete(`/carts/${cartId}`);
@@ -44,8 +44,8 @@ const initialState = {
   cartTotalQuantity: 0, 
   cartTotalAmount: 0,
   syncStatus: 'idle', 
-  serverCartId: null, // 👈 سنحفظ هنا الـ ID الخاص بالسيرفر لكي نستطيع حذفه لاحقاً
-  userCartsHistory: [], // 👈 لحفظ سجل الطلبات السابقة
+  serverCartId: null, //  سنحفظ هنا الـ ID الخاص بالسيرفر لكي نستطيع حذفه لاحقاً
+  userCartsHistory: [], // لحفظ سجل الطلبات السابقة
 };
 
 const cartSlice = createSlice({

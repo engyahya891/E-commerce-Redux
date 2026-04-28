@@ -5,7 +5,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../Redux/authSlice'; // تأكد من صحة مسار الاستدعاء
 
 export default function Login() {
-  // 1. تغيير email إلى username ليطابق الـ API
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   
@@ -58,7 +57,7 @@ export default function Login() {
 
           <h2 className="text-2xl font-black text-white mb-8 tracking-wider">SYSTEM LOGIN</h2>
 
-          {/* 🚨 عرض رسالة الخطأ القادمة من السيرفر إن وجدت */}
+          {/* عرض رسالة الخطأ القادمة من السيرفر إن وجدت */}
           {error && (
             <div className="mb-6 p-3 bg-red-500/10 border border-red-500 text-red-500 text-xs font-bold tracking-widest text-center">
               {error}
@@ -73,7 +72,7 @@ export default function Login() {
               <div className="relative">
                 <FiUser className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" />
                 <input
-                  type="text" // تغيير إلى text بدلاً من email
+                  type="text" 
                   required
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}

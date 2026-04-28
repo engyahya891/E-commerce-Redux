@@ -26,7 +26,7 @@ export const fetchAllProducts = async () => {
 
 
 
-// تأكد من أن دالة fetchAllProducts موجودة في نفس الملف وتعمل بشكل صحيح
+
 export const fetchProductById = async (id) => {
   try {
     // 1. بدلاً من طلب منتج واحد، نجلب جميع المنتجات

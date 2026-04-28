@@ -1,19 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-// استدعاء دالة الـ API التي كتبتها أنت (تأكد من صحة المسار)
-import { loginAPI } from '../api/auth'; // استبدل المسار بمسار ملفك الفعلي
+import { loginAPI } from '../api/auth'; 
 
-// 1. إنشاء دالة غير متزامنة (Async Thunk) للاتصال بالسيرفر
+// 1.  دالة غير متزامنة (Async Thunk) للاتصال بالسيرفر
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (userData, { rejectWithValue }) => {
     try {
-      // 🚨 قمنا بتعطيل كود الـ API الحقيقي مؤقتاً لأن رابط الأستاذ يعطي 404
+      //   تعطيل كود الـ API الحقيقي مؤقتاً لأن رابط الأستاذ يعطي 404
       // const data = await loginAPI(userData);
       
-      // ✅ سنقوم بصنع تأخير زمني وهمي لمحاكاة وقت الاتصال بالإنترنت (ثانية واحدة)
+      //    تأخير زمني وهمي لمحاكاة وقت الاتصال بالإنترنت (ثانية واحدة)
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      // ✅ محاكاة رد السيرفر: سنقبل أي بيانات يدخلها المستخدم ونعطيه توكن وهمي لكي يمر
+      //  محاكاة رد السيرفر: سنقبل أي بيانات يدخلها المستخدم ونعطيه توكن وهمي لكي يمر
       if (userData.username && userData.password) {
         const dummyData = {
           Token: "eyJhbGciOiJIUzI1NiIs.fake_token_for_graduation_project",

@@ -1,9 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchAllProducts, fetchProductById } from '../services/productService';
-// 🚀 استدعاء أداة الاتصال للروابط الجديدة (تأكد أن هذا هو المسار الصحيح في مشروعك)
 import apiClient from '../api/axiosInstance'; 
 
-// 1. الثانك الخاص بجلب كل المنتجات (كودك الأصلي)
+// 1. الثانك الخاص بجلب كل المنتجات 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async (_, { rejectWithValue }) => {
@@ -12,7 +11,7 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
-// 2. ثانك لجلب منتج واحد فقط (كودك الأصلي)
+// 2. ثانك لجلب منتج واحد فقط
 export const getSingleProduct = createAsyncThunk(
   'products/getSingleProduct',
   async (id, { rejectWithValue }) => {
@@ -21,7 +20,7 @@ export const getSingleProduct = createAsyncThunk(
   }
 );
 
-// 🚀 3. ثانك جديد لجلب قائمة التصنيفات
+//  3. ثانك جديد لجلب قائمة التصنيفات
 export const fetchCategories = createAsyncThunk(
   'products/fetchCategories',
   async (_, { rejectWithValue }) => {
@@ -34,7 +33,7 @@ export const fetchCategories = createAsyncThunk(
   }
 );
 
-// 🚀 4. ثانك جديد لجلب منتجات تصنيف محدد
+//  4. ثانك جديد لجلب منتجات تصنيف محدد
 export const fetchProductsByCategory = createAsyncThunk(
   'products/fetchByCategory',
   async (categoryName, { rejectWithValue }) => {
@@ -52,9 +51,9 @@ const productsSlice = createSlice({
   initialState: {
     items: [],
     selectedProduct: null, // هنا سنخزن المنتج الحالي
-    categories: [],        // 👈 قائمة التصنيفات (جديد)
+    categories: [],        //  قائمة التصنيفات 
     status: 'idle',
-    categoriesStatus: 'idle', // 👈 حالة تحميل التصنيفات (جديد)
+    categoriesStatus: 'idle', // حالة تحميل التصنيفات 
     error: null,
   },
   reducers: {
@@ -65,7 +64,7 @@ const productsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // ---------- حالات جلب كل المنتجات (كودك الأصلي) ----------
+      // ---------- حالات جلب كل المنتجات  ----------
       .addCase(fetchProducts.pending, (state) => { state.status = 'loading'; })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.status = 'succeeded';
@@ -76,7 +75,7 @@ const productsSlice = createSlice({
         state.error = action.payload;
       })
       
-      // ---------- حالات جلب منتج واحد (كودك الأصلي) ----------
+      // ---------- حالات جلب منتج واحد ----------
       .addCase(getSingleProduct.pending, (state) => { state.status = 'loading'; })
       .addCase(getSingleProduct.fulfilled, (state, action) => {
         state.status = 'succeeded';
@@ -87,7 +86,7 @@ const productsSlice = createSlice({
         state.error = action.payload;
       })
 
-      // 🚀 ---------- حالات جلب قائمة التصنيفات (الجديدة) ----------
+      //  ---------- حالات جلب قائمة التصنيفات  ----------
       .addCase(fetchCategories.pending, (state) => { state.categoriesStatus = 'loading'; })
       .addCase(fetchCategories.fulfilled, (state, action) => {
         state.categoriesStatus = 'succeeded';
@@ -98,7 +97,7 @@ const productsSlice = createSlice({
         state.error = action.payload;
       })
 
-      // 🚀 ---------- حالات جلب منتجات تصنيف محدد (الجديدة) ----------
+      //  ---------- حالات جلب منتجات تصنيف محدد  ----------
       .addCase(fetchProductsByCategory.pending, (state) => { state.status = 'loading'; })
       .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
         state.status = 'succeeded';

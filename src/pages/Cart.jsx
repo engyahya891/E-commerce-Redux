@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CartItem from "../components/CartItem";
 import { formatCurrency } from "../utils/currencyFormatter";
-// 🚀 استدعاء كل الدوال لختام المشروع
 import { clearCart, deleteCartOnServer, fetchUserCarts, getTotals, syncCartWithServer } from '../Redux/cartSlice';
 
 export default function Cart() {
@@ -16,7 +15,7 @@ export default function Cart() {
     dispatch(getTotals());
   }, [cart.cartItems, dispatch]);
 
-  // 🚀 جلب سلات المستخدم من السيرفر بمجرد الدخول للصفحة (تنفيذاً لرابط GET في الـ PDF)
+  //  جلب سلات المستخدم من السيرفر بمجرد الدخول للصفحة 
   useEffect(() => {
     dispatch(fetchUserCarts(1)); // نرسل 1 كـ ID للمستخدم الافتراضي
   }, [dispatch]);
@@ -25,7 +24,7 @@ export default function Cart() {
   const handleCheckout = () => {
     dispatch(syncCartWithServer()).then((action) => {
       if (syncCartWithServer.fulfilled.match(action)) {
-        alert("تم إرسال سلتك للسيرفر بنجاح! 🚀 تم خصم الرصيد.");
+        alert("تم إرسال سلتك للسيرفر بنجاح!  تم خصم الرصيد.");
         // بعد الدفع الناجح، نفرغ السلة محلياً
         dispatch(clearCart());
       } else {
@@ -34,7 +33,7 @@ export default function Cart() {
     });
   };
 
-  // 🚀 دالة تفريغ السلة (تنفذ أمر DELETE على السيرفر إن وجدت، وتفرغ المحلي)
+  //  دالة تفريغ السلة (تنفذ أمر DELETE على السيرفر إن وجدت، وتفرغ المحلي)
   const handleClearCart = () => {
     // إذا كانت السلة محفوظة مسبقاً في السيرفر، نحذفها منه
     if (cart.serverCartId) {
@@ -107,7 +106,7 @@ export default function Cart() {
                 {syncStatus !== 'loading' && <FiArrowRight size={16} />}
               </button>
 
-              {/* 🚀 زر تفريغ السلة الجديد (لتنفيذ أمر DELETE) */}
+              {/*  زر تفريغ السلة الجديد (لتنفيذ أمر DELETE) */}
               <button 
                 onClick={handleClearCart}
                 className="w-full bg-transparent border border-red-900/50 text-red-500 hover:bg-red-500 hover:text-white font-black py-3 tracking-widest transition-colors text-xs flex items-center justify-center gap-2"

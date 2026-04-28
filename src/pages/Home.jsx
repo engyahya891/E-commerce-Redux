@@ -3,7 +3,7 @@ import { FiArrowLeft, FiArrowRight, FiRefreshCw, FiShield, FiStar, FiTruck, FiZa
 import CountdownTimer from '../components/CountdownTimer';
 import ProductCard from '../components/ProductCard';
 
-// ─── Data (تم تحديث جميع الصور بروابط ثابتة وعالية الدقة) ───────────────────
+// ─── Data (تحديث جميع الصور بروابط ثابتة وعالية الدقة) ───────────────────
 
 const CURATED_PRODUCTS = [
   { id: 1, title: 'CHRONO SHIFT',   category: 'ACCESSORIES', price: 299, badge: 'NEW',         image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400&auto=format&fit=crop' },

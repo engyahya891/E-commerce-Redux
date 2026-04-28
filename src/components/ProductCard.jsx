@@ -15,20 +15,14 @@ export default function ProductCard({ product }) {
   
 
   return (
-
-
-
-    
     <div className="bg-[#121212] group rounded-lg overflow-hidden border border-gray-800 hover:border-cyan-500/50 transition-all duration-300">
       {/* منطقة الصورة */}
-     {/* ── منطقة الصورة (تم تصحيح الأبعاد هنا) ── */}
      <div className="relative h-64 w-full bg-[#050505] overflow-hidden">
         {/* جعلنا الرابط يأخذ المساحة بالكامل */}
         <Link to={`/product/${item.id}`} className="block w-full h-full">
           <img 
             src={item.image} 
             alt={item.title} 
-            // استخدام w-full h-full مع object-cover يضمن توحيد مقاسات كل الصور
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
           />
         </Link>
@@ -44,7 +38,7 @@ export default function ProductCard({ product }) {
           <p className="text-gray-300">${item.price}</p>
         </div>
 
-        {/* زر الإضافة للسلة (كما في التصميم: مربع أبيض/مضيء) */}
+        {/* زر الإضافة للسلة  */}
         <button 
           className="bg-white text-black hover:bg-cyan-400 hover:text-white w-10 h-10 flex items-center justify-center rounded transition-colors duration-300"
           title="Add to Cart"

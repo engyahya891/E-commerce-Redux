@@ -29,7 +29,7 @@ export default function Navbar() {
           NEON NOIR
         </Link>
 
-        {/* 🚨 التعديل هنا: استخدمنا lg بدلاً من md لتختفي الروابط في التابلت وتظهر فقط في اللابتوب */}
+        {/*  التعديل هنا استخدمنا lg بدلاً من md لتختفي الروابط في التابلت وتظهر فقط في اللابتوب */}
         <div className="hidden lg:flex space-x-8 text-sm font-medium tracking-wider text-gray-400">
           <Link to="/" className="hover:text-cyan-400 transition">NEW ARRIVALS</Link>
           <Link to="/products" className="hover:text-cyan-400 transition">Products</Link>
@@ -70,7 +70,7 @@ export default function Navbar() {
             <FiUser size={20} />
           </Link>
 
-          {/* 🚨 التعديل هنا: زر القائمة يظهر في الموبايل والتابلت (الشاشات الأصغر من lg) */}
+          {/* زر القائمة يظهر في الموبايل والتابلت (الشاشات الأصغر من lg) */}
           <button 
             className="lg:hidden text-cyan-400 hover:text-white transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
